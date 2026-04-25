@@ -40,4 +40,14 @@ function calcular(){
     let cuotaMensual = calcularCuotaMensual(totalPagar, plazoAñoBase);
     let mostrarCuotaMensual = document.getElementById("spnCuotaMensual");
     mostrarCuotaMensual.textContent = cuotaMensual;
+
+    let Credito = aprobarCredito(capacidadPago, cuotaMensual);
+    if (Credito == true){
+        let aprobar = document.getElementById("spnEstadoCredito");
+        aprobar.textContent = "CREDITO APROBADO";
+    }
+    else{
+        let denegar = document.getElementById("spnEstadoCredito");
+        denegar.textContent = "CREDITO RECHAZADO";
+    }
 }
