@@ -1,53 +1,77 @@
 //AQUI EL JAVASCRIPT PARA MANIPULAR EL HTML
 
 function calcular(){
-    let vIngresos = document.getElementById("txtIngresos");
-    let ingresosStr = vIngresos.value;
-    let ingresosBase = parseFloat(ingresosStr);
 
-    let vEgresos = document.getElementById("txtEgresos");
-    let egresosStr = vEgresos.value;
-    let egresosBase = parseFloat(egresosStr);
+    limpiarErrores();
+
+    let ingresos = document.getElementById("txtIngresos");
+    let egresos = document.getElementById("txtEgresos");
+    let monto = document.getElementById("txtMonto");
+    let plazo = document.getElementById("txtPlazo");
+    let tasa = document.getElementById("txtTasaInteres");
+
+    let valido = true;
+
+    if (!ingresos.checkValidity()){
+        mostrarError("errIngresos", ingresos, "Ingrese un valor válido");
+        valido = false;
+    }
+
+    if (!egresos.checkValidity()){
+        mostrarError("errEgresos", egresos, "Ingrese un valor válido");
+        valido = false;
+    }
+
+    if (!monto.checkValidity()){
+        mostrarError("errMonto", monto, "Monto inválido");
+        valido = false;
+    }
+
+    if (!plazo.checkValidity()){
+        mostrarError("errPlazo", plazo, "Plazo inválido");
+        valido = false;
+    }
+
+    if (!tasa.checkValidity()){
+        mostrarError("errTasa", tasa, "Tasa inválida");
+        valido = false;
+    }
+
+    if (!valido) return;
+
+    let ingresosBase = parseFloat(ingresos.value);
+    let egresosBase = parseFloat(egresos.value);
+    let montoBase = parseFloat(monto.value);
+    let plazoBase = parseInt(plazo.value);
+    let tasaBase = parseFloat(tasa.value);
 
     let disponible = calcularDisponible(ingresosBase, egresosBase);
-    let mostrarDisponible = document.getElementById("spnDisponible");
-    mostrarDisponible.textContent = disponible;
+    document.getElementById("spnDisponible").textContent = disponible;
 
     let capacidadPago = calcularCapacidadPago(disponible);
-    let mostrarCapacidadPago = document.getElementById("spnCapacidadPago");
-    mostrarCapacidadPago.textContent = capacidadPago;
+    document.getElementById("spnCapacidadPago").textContent = capacidadPago;
 
-    let plazoAño = document.getElementById("txtPlazo");
-    let plazoAñoStr = plazoAño.value;
-    let plazoAñoBase = parseInt(plazoAñoStr);
+    let interes = calcularInteresSimple(montoBase, tasaBase, plazoBase);
+    document.getElementById("spnInteresPagar").textContent = interes;
 
-    let tasa = document.getElementById("txtTasaInteres");
-    let tasaStr = tasa.value;
-    let tasaBase = parseInt(tasaStr);
+    let total = calcularTotalPagar(montoBase, interes);
+    document.getElementById("spnTotalPrestamo").textContent = total;
 
-    let monto = document.getElementById("txtMonto");
-    let montoStr = monto.value;
-    let montoBase = parseInt(montoStr);
+    let cuota = calcularCuotaMensual(total, plazoBase);
+    document.getElementById("spnCuotaMensual").textContent = cuota;
 
-    let interesSimple = calcularInteresSimple(montoBase, tasaBase, plazoAñoBase);
-    let mostrarInteresSimple = document.getElementById("spnInteresPagar");
-    mostrarInteresSimple.textContent = interesSimple;
+    let credito = aprobarCredito(capacidadPago, cuota);
 
-    let totalPagar = calcularTotalPagar(montoBase, interesSimple);
-    let mostrarTotalPagar = document.getElementById("spnTotalPrestamo");
-    mostrarTotalPagar.textContent = totalPagar;
+    let estado = document.getElementById("spnEstadoCredito");
+    estado.textContent = credito ? "CREDITO APROBADO" : "CREDITO RECHAZADO";
+}
 
-    let cuotaMensual = calcularCuotaMensual(totalPagar, plazoAñoBase);
-    let mostrarCuotaMensual = document.getElementById("spnCuotaMensual");
-    mostrarCuotaMensual.textContent = cuotaMensual;
+function mostrarError(idError, input, mensaje){
+    document.getElementById(idError).textContent = mensaje;
+    input.classList.add("input-error");
+}
 
-    let Credito = aprobarCredito(capacidadPago, cuotaMensual);
-    if (Credito == true){
-        let aprobar = document.getElementById("spnEstadoCredito");
-        aprobar.textContent = "CREDITO APROBADO";
-    }
-    else{
-        let denegar = document.getElementById("spnEstadoCredito");
-        denegar.textContent = "CREDITO RECHAZADO";
-    }
+function limpiarErrores(){
+    document.querySelectorAll(".error").forEach(e => e.textContent = "");
+    document.querySelectorAll("input").forEach(i => i.classList.remove("input-error"));
 }

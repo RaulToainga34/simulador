@@ -1,0 +1,2 @@
+1. pon validaciones aqui como que solo se acepten numeros y que no puede estar vacion
+2. la validacion ponla encima del cuadrado donde no se cumplio la validacion

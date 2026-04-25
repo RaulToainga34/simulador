@@ -2,66 +2,80 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador de Crédito</title>
     <link rel="stylesheet" href="simulador.css">
-
 </head>
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <div class="top-bar"></div>
+    <div class="top-bar"></div>
 
-        <div class="header">
-            <img src="logoBancoP.png" class="logo">
-            <h1>Simulador de Crédito</h1>
-            <p>Consulta y evaluación financiera</p>
-        </div>
-
-        <div class="section">
-            <h2>Datos financieros</h2>
-
-            <label for="txtIngresos">Ingresos</label>
-            <input type="text" id="txtIngresos">
-
-            <label for="txtEgresos">Egresos</label>
-            <input type="text" id="txtEgresos">
-
-            <div class="result-box">
-                <p>Disponible <span id="spnDisponible"></span></p>
-                <p>Capacidad de pago <span id="spnCapacidadPago"></span></p>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Solicitud de crédito</h2>
-
-            <label for="txtMonto">Monto</label>
-            <input type="text" id="txtMonto">
-
-            <label for="txtPlazo">Plazo en años</label>
-            <input type="text" id="txtPlazo">
-
-            <label for="txtTasaInteres">Tasa de interés</label>
-            <input type="text" id="txtTasaInteres">
-
-            <div class="result-box">
-                <p>Interés <span id="spnInteresPagar"></span></p>
-                <p>Total <span id="spnTotalPrestamo"></span></p>
-                <p>Cuota mensual <span id="spnCuotaMensual"></span></p>
-                <p class="estado">Estado: <span id="spnEstadoCredito">ANALIZANDO...</span></p>
-            </div>
-        </div>
-
-        <div class="buttons">
-            <button id="btnCalcularCredito" onclick="calcular()">Calcular</button>
-            <button id="btnReiniciar">Reiniciar</button>
-        </div>
-
+    <div class="header">
+        <img src="logoBancoP.png" class="logo">
+        <h1>Simulador de Crédito</h1>
+        <p>Consulta y evaluación financiera</p>
     </div>
 
-    <script src="simulador.js"></script>
-    <script src="funciones.js"></script>
+    <div class="section">
+        <h2>Datos financieros</h2>
+
+        <div class="input-group">
+            <div class="error" id="errIngresos"></div>
+            <label>Ingresos</label>
+            <input type="number" id="txtIngresos" required min="0">
+        </div>
+
+        <div class="input-group">
+            <div class="error" id="errEgresos"></div>
+            <label>Egresos</label>
+            <input type="number" id="txtEgresos" required min="0">
+        </div>
+
+        <div class="result-box">
+            <p>Disponible: <span id="spnDisponible"></span></p>
+            <p>Capacidad de pago: <span id="spnCapacidadPago"></span></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Solicitud de crédito</h2>
+
+        <div class="input-group">
+            <div class="error" id="errMonto"></div>
+            <label>Monto</label>
+            <input type="number" id="txtMonto" required min="1">
+        </div>
+
+        <div class="input-group">
+            <div class="error" id="errPlazo"></div>
+            <label>Plazo (años)</label>
+            <input type="number" id="txtPlazo" required min="1">
+        </div>
+
+        <div class="input-group">
+            <div class="error" id="errTasa"></div>
+            <label>Tasa de interés</label>
+            <input type="number" id="txtTasaInteres" required min="0">
+        </div>
+
+        <div class="result-box">
+            <p>Interés: <span id="spnInteresPagar"></span></p>
+            <p>Total: <span id="spnTotalPrestamo"></span></p>
+            <p>Cuota mensual: <span id="spnCuotaMensual"></span></p>
+            <p>Estado: <span id="spnEstadoCredito">ANALIZANDO...</span></p>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button id="btnCalcularCredito" onclick="calcular()">Calcular</button>
+        <button id="btnReiniciar" onclick="location.reload()">Reiniciar</button>
+    </div>
+
+</div>
+
+<script src="funciones.js"></script>
+<script src="simulador.js"></script>
+
 </body>
 </html>
