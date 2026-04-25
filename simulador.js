@@ -9,7 +9,11 @@ function calcular(){
     let egresosStr = vEgresos.value;
     let egresosBase = parseFloat(egresosStr);
 
-    let resultado = calcularDisponible(ingresosBase, egresosBase);
-    let mostrarResultado = document.getElementById("spnDisponible");
-    mostrarResultado.textContent = resultado;
+    let disponible = calcularDisponible(ingresosBase, egresosBase);
+    let mostrarDisponible = document.getElementById("spnDisponible");
+    mostrarDisponible.textContent = disponible;
+
+    let capacidadPago = calcularCapacidadPago(disponible);
+    let mostrarCapacidadPago = document.getElementById("spnCapacidadPago");
+    mostrarCapacidadPago.textContent = capacidadPago
 }
