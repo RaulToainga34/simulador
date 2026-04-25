@@ -1,0 +1,4 @@
+1. actúa como un diseñador grafico, mejora la parte visual con un aspecto empresarial, modifica el html y el css por separado, no cambies los ids de los componentes
+2. haslo estilo banco pichincha
+3. pon esta imagen de fondo
+4. pon esta imagen como logo con el codigo

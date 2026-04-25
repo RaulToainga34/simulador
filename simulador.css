@@ -1,70 +1,143 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
-    padding: 0;
+    background: 
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url("fondoBanco.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
+/* Contenedor principal */
 .container {
-    width: 400px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 420px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    overflow: hidden;
 }
 
-h1 {
+/* Barra superior amarilla */
+.top-bar {
+    height: 8px;
+    background: #FFD100;
+}
+
+/* Header */
+.header {
     text-align: center;
-    margin-bottom: 20px;
+    padding: 20px;
+    background: #002F6C;
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.header p {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* Secciones */
+.section {
+    padding: 20px;
 }
 
 h2 {
-    margin-top: 20px;
-    font-size: 18px;
+    font-size: 15px;
+    color: #002F6C;
+    margin-bottom: 10px;
 }
 
+/* Inputs */
 label {
-    display: block;
-    margin-top: 10px;
+    font-size: 13px;
     font-weight: bold;
+    color: #333;
 }
 
 input {
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 5px;
+    padding: 10px;
+    margin: 6px 0 12px 0;
+    border-radius: 6px;
     border: 1px solid #ccc;
-    box-sizing: border-box;
+    transition: 0.3s;
 }
 
-p {
-    margin-top: 10px;
+input:focus {
+    border-color: #FFD100;
+    box-shadow: 0 0 5px rgba(255,209,0,0.6);
+    outline: none;
+}
+
+/* Resultados */
+.result-box {
+    background: #f9fafb;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #FFD100;
+}
+
+.result-box p {
+    margin: 6px 0;
+    font-size: 14px;
 }
 
 span {
     font-weight: bold;
-    color: #2c3e50;
+    color: #002F6C;
 }
 
+/* Estado */
+.estado span {
+    font-weight: bold;
+}
+
+/* Botones */
 .buttons {
-    margin-top: 20px;
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
+    padding: 20px;
 }
 
 button {
-    width: 48%;
-    padding: 10px;
+    flex: 1;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
-    background-color: #3498db;
-    color: white;
+    border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-button:hover {
-    background-color: #2980b9;
+/* Botón principal */
+#btnCalcularCredito {
+    background: #FFD100;
+    color: #002F6C;
+}
+
+#btnCalcularCredito:hover {
+    background: #e6bc00;
+}
+
+/* Botón secundario */
+#btnReiniciar {
+    background: #002F6C;
+    color: white;
+}
+
+#btnReiniciar:hover {
+    background: #001f4d;
+}
+
+.logo {
+    width: 140px;
+    display: block;
+    margin: 0 auto 10px auto;
 }
