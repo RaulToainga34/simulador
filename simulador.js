@@ -15,5 +15,5 @@ function calcular(){
 
     let capacidadPago = calcularCapacidadPago(disponible);
     let mostrarCapacidadPago = document.getElementById("spnCapacidadPago");
-    mostrarCapacidadPago.textContent = capacidadPago
+    mostrarCapacidadPago.textContent = capacidadPago;
 }
