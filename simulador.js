@@ -32,4 +32,8 @@ function calcular(){
     let interesSimple = calcularInteresSimple(montoBase, tasaBase, plazoAñoBase);
     let mostrarInteresSimple = document.getElementById("spnInteresPagar");
     mostrarInteresSimple.textContent = interesSimple;
+
+    let totalPagar = calcularTotalPagar(montoBase, interesSimple);
+    let mostrarTotalPagar = document.getElementById("spnTotalPrestamo");
+    mostrarTotalPagar.textContent = totalPagar;
 }
