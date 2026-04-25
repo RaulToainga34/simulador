@@ -36,4 +36,8 @@ function calcular(){
     let totalPagar = calcularTotalPagar(montoBase, interesSimple);
     let mostrarTotalPagar = document.getElementById("spnTotalPrestamo");
     mostrarTotalPagar.textContent = totalPagar;
+
+    let cuotaMensual = calcularCuotaMensual(totalPagar, plazoAñoBase);
+    let mostrarCuotaMensual = document.getElementById("spnCuotaMensual");
+    mostrarCuotaMensual.textContent = cuotaMensual;
 }
