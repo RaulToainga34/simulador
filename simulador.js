@@ -16,4 +16,20 @@ function calcular(){
     let capacidadPago = calcularCapacidadPago(disponible);
     let mostrarCapacidadPago = document.getElementById("spnCapacidadPago");
     mostrarCapacidadPago.textContent = capacidadPago;
+
+    let plazoAño = document.getElementById("txtPlazo");
+    let plazoAñoStr = plazoAño.value;
+    let plazoAñoBase = parseInt(plazoAñoStr);
+
+    let tasa = document.getElementById("txtTasaInteres");
+    let tasaStr = tasa.value;
+    let tasaBase = parseInt(tasaStr);
+
+    let monto = document.getElementById("txtMonto");
+    let montoStr = monto.value;
+    let montoBase = parseInt(montoStr);
+
+    let interesSimple = calcularInteresSimple(montoBase, tasaBase, plazoAñoBase);
+    let mostrarInteresSimple = document.getElementById("spnInteresPagar");
+    mostrarInteresSimple.textContent = interesSimple;
 }
