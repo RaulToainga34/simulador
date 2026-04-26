@@ -28,8 +28,19 @@
 
         <div class="input-group">
             <div class="error" id="errEgresos"></div>
-            <label>Egresos</label>
-            <input type="number" id="txtEgresos" required min="0">
+            <label>Arriendo</label>
+            <input type="number" id="txtArriendo" required min="0">
+
+            <label>Alimentación</label>
+            <input type="number" id="txtAlimentacion" required min="0">
+
+            <label>Varios</label>
+            <input type="number" id="txtVarios" required min="0">
+        </div>
+
+        <!-- NUEVO: Total de gastos -->
+        <div class="result-box">
+            <p>Total gastos: <span id="spnTotalGastos"></span></p>
         </div>
 
         <div class="result-box">
